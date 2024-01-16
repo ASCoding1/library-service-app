@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="0" author="yourname">
+        <sql>
+            CREATE DATABASE IF NOT EXISTS library_db3;
+        </sql>
+    </changeSet>
+
+    <!-- Create _user Table -->
+    <changeSet id="1" author="adrian">
+        <createTable tableName="_user">
+            <column name="email" type="varchar(45)">
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="role" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="surname" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create book Table -->
+    <changeSet id="2" author="adrian">
+        <createTable tableName="book">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="author" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="blocked" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="category" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create logs Table -->
+    <changeSet id="3" author="adrian">
+        <createTable tableName="logs">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_email" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="class_name" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="method_name" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="execution_time" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="local_date_time" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create rental Table -->
+    <changeSet id="4" author="adrian">
+        <createTable tableName="rental">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="from_date" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+            <column name="to_date" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+            <column name="returned" type="tinyint">
+                <constraints nullable="false" />
+            </column>
+            <column name="book_id" type="int" />
+            <column name="user_email" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create subscription Table -->
+    <changeSet id="5" author="adrian">
+        <createTable tableName="subscription">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="category_name" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_email" type="varchar(45)">
+                <constraints nullable="false" />
+            </column>
+            <column name="creation_date" type="date">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
